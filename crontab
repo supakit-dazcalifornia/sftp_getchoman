@@ -1,2 +1,2 @@
-0 6 * * * root /scripts/download.sh >> /var/log/sftp-download.log 2>&1
+*/5 * * * * root /scripts/download.sh >> /var/log/sftp-download.log 2>&1
 
