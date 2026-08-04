@@ -1,0 +1,15 @@
+services:
+  sftp-download:
+    build: .
+    container_name: sftp-download
+    restart: unless-stopped
+
+    environment:
+      TZ: Asia/Bangkok
+      SFTP_HOST: ${SFTP_HOST}
+      SFTP_PATH: ${SFTP_PATH}
+      SFTP_USERNAME: ${SFTP_USERNAME}
+      SFTP_PASSWORD: ${SFTP_PASSWORD}
+
+    volumes:
+      - ./data:/data
