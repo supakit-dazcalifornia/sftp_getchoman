@@ -1,9 +1,12 @@
 #!/bin/bash
 
+trap 'LOG_TIME=$(date "+%Y-%m-%d %H:%M:%S"); echo "[$LOG_TIME] ERROR at line $LINENO"' ERR
 set -e
-echo "Start download system"
-echo "Host: $SFTP_HOST"
-echo "Path: $SFTP_PATH"
+LOG_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+echo "[$LOG_TIME] Start download system"
+echo "[$LOG_TIME] Host: $SFTP_HOST"
+echo "[$LOG_TIME] Path: $SFTP_PATH"
+echo "[$LOG_TIME] Username: $SFTP_USERNAME"
 
 mkdir -p /data
 
@@ -17,4 +20,5 @@ mget *.xlsx
 bye
 EOF
 
-echo "Download completed."
+LOG_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+echo "[$LOG_TIME] Download completed."
