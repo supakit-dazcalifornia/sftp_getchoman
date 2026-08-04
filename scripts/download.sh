@@ -27,10 +27,17 @@ lcd /data
 mget *.csv
 mget *.xls
 mget *.xlsx
-chmod 777 *.csv *.xls *.xlsx 2>/dev/null || true
-mv *.csv ../success/ 2>/dev/null || true
-mv *.xls ../success/ 2>/dev/null || true
-mv *.xlsx ../success/ 2>/dev/null || true
+bye
+EOF
+
+sshpass -p "$SFTP_PASSWORD" \
+  sftp \
+  -o StrictHostKeyChecking=no \
+  "$SFTP_USERNAME@$SFTP_HOST" <<EOF
+cd $SFTP_PATH
+rm *.csv
+rm *.xls
+rm *.xlsx
 bye
 EOF
 
