@@ -2,6 +2,11 @@
 
 trap 'LOG_TIME=$(date "+%Y-%m-%d %H:%M:%S"); echo "[$LOG_TIME] ERROR at line $LINENO"' ERR
 set -e
+
+if [ -f /app/.env ]; then
+  export $(cat /app/.env | xargs)
+fi
+
 LOG_TIME=$(date '+%Y-%m-%d %H:%M:%S')
 echo "[$LOG_TIME] Start download system"
 echo "[$LOG_TIME] Host: $SFTP_HOST"

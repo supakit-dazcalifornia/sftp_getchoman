@@ -9,6 +9,7 @@ RUN apt-get update \
 
 COPY scripts/download.sh /scripts/download.sh
 COPY crontab /etc/cron.d/sftp-download
+COPY .env /app/.env
 
 RUN chmod +x /scripts/download.sh \
     && chmod 0644 /etc/cron.d/sftp-download
