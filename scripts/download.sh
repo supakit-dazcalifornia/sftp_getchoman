@@ -24,6 +24,8 @@ sshpass -p "$SFTP_PASSWORD" \
   "$SFTP_USERNAME@$SFTP_HOST" <<EOF
 cd $SFTP_PATH
 lcd /data
+mget *.csv
+mget *.xls
 mget *.xlsx
 bye
 EOF
